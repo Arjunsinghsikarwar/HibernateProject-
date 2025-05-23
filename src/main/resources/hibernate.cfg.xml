@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings for MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/HIBERNATE_MYSQL</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Arjun#123</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Schema management (update the schema on startup) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+       <!-- this show how the query getting executed -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- ehcache properties 1. making true , so that kind of it get invoke to get used -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!-- Even after invoking it do not work we have metion who is using it . The value or thingh i put here is the path of the Ehcacheregionfactory-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+    </session-factory>
+</hibernate-configuration>
+

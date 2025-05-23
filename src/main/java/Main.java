@@ -3,31 +3,35 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-class Main
-{
-    public static void main(String[] args)
-    {
+class Main {
+    public static void main(String[] args) {
         Side student = new Side();
-      //  System.out.println(side);  after seeign the result of this , try to reliaze why we Overiide the toString() method.
+        // After seeing the output of this, try to realize why we override the toString() method.
 
         student.setName("Munish");
         student.setEducation("B.tech");
         student.setRool_Number(69);
 
-        Configuration configuration = new Configuration().configure().addAnnotatedClass(Side.class); // the class jiska humhe data save krna hain.
+        Configuration configuration = new Configuration().configure().addAnnotatedClass(Side.class); 
+        // Specify the entity class where we want to save the data.
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();  // To make the permentat changes we need this .
-        session.save(student);
-        transaction.commit(); // here changes have succesfully
 
-        // hum session.save(student); ko try and catch likhte hain , b/c transaction have the method rollback ke agr Exception aayge toh chize roolback ho jaaye.
+        Transaction transaction = session.beginTransaction();  
+        // To make permanent changes in the database, we need a transaction.
+
+        session.save(student);
+        transaction.commit();  
+        // Changes are successfully committed here.
+
+        // It's good practice to use try-catch around session.save(student) 
+        // because the transaction has a rollback() method to undo changes if an exception occurs.
 
         System.out.println(student);
 
-
-//         <property name="hibernate.hbm2ddl.auto">update</property>
-        // this proeprty is used to make a table by itself , name we make the updated because it will the update the and table , and if the tbale do not had created previously then it will make onece.
-
+        // <property name="hibernate.hbm2ddl.auto">update</property>
+        // This property automatically creates or updates the table schema.
+        // We use "update" so it updates the existing table or creates a new one if it doesn't exist.
     }
 }

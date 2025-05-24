@@ -20,8 +20,12 @@ class Main {
 
         Transaction transaction = session.beginTransaction();  
         // To make permanent changes in the database, we need a transaction.
+        Side existing = session.get(Side.class,69)
+            if(existing == null) session.save(student);
+        else 
+            System.out.println("Record with ID already exist");
 
-        session.save(student);
+         //session.save(student); if ww didnt used the if and else above then we used this 
         transaction.commit();  
         // Changes are successfully committed here.
 

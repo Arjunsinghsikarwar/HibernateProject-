@@ -18,5 +18,4 @@ This is a simple Java-based console application built using Hibernate ORM and My
 - Integrated MySQL database with Hibernate ORM
 - Applied **Level 1 Cache** (default in Hibernate)
 - Applied **Level 2 Cache** using `@Cacheable` and Ehcache
-- Follows a simple layered structure (Entity → DAO → Service)
-- Console-based UI for interactio
+

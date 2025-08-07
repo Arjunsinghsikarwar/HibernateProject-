@@ -12,15 +12,19 @@ class Main {
         student.setEducation("B.tech");
         student.setRool_Number(69);
 
-        Configuration configuration = new Configuration().configure().addAnnotatedClass(Side.class); 
+        Configuration configuration = new Configuration().configure().addAnnotatedClass(Side.class);
+        // by 'new Configuration' we new Hibernate Configuration Object , configure() is used to read the hibernate.cfg.xml means know DB url , username,password.
         // Specify the entity class where we want to save the data.
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
+        // sessionfactory ek heavy object , by creating it once we can create multiple sessions.
         Session session = sessionFactory.openSession();
+        // session is light object , you create session object open once , do one DB operations or work ,  then close it .
 
         Transaction transaction = session.beginTransaction();  
         // To make permanent changes in the database, we need a transaction.
-        Side existing = session.get(Side.class,69)
+        // DB operation should be done in the transaction so if somethingh went wrong we can rollback.
+        Side existing = session.get(Side.class,69);
             if(existing == null) session.save(student);
         else 
             System.out.println("Record with ID already exist");

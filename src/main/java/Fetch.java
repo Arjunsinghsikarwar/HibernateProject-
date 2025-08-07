@@ -17,6 +17,7 @@ public class Fetch {
         // Remember this: there are two methods in the Session interface to fetch data from the database:
         // 1. get()  --> This method immediately executes the query, even if the retrieved object is not used.
         // 2. load() --> This method executes the query only when the object is accessed (lazy loading).
+        // use the load when 100% sure that this object exist.
 
         Side student = session.get(Side.class, 12); // The query executes immediately.
 

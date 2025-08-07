@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
 
-@Entity
+@Entity // hibernate treat this as a database.
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)  // The READ_ONLY strategy ensures the data cannot be changed.
 // This is ideal for static data that never changes, like country names or currency codes.
